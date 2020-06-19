@@ -1,15 +1,14 @@
-# CMPS128 Fall 2019
+# CMPS128 Fall 2020
 ## Distributed Systems
 | key | value | 
 |-----|-------|
-|When: | Monday, Wednesday and Friday at <b>1:20 PM</b>. |
-|Where: | Merrill Academic 102 |
+|When: | Monday, Wednesday and Friday at <b>8:00 AM (yikes!)</b>. |
+|Where: | Peter Alvaro's zoom room |
 |Who: | [Peter Alvaro](http://people.ucsc.edu/~palvaro/) |
-|Office hours: | Mondays @ 2:25 (begins at Merrill Academic 102 and ends in E2)|
-||               Fridays @ 12:30 (begins at E2 and ends at Merrill)|
-|Prerequisites: | CSE101 or CE150 required. CSE111 or CSE105 recommended. |
+|Office hours: | TBD|
+|Prerequisites: | (CSE101 or CE150) and CSE130 required. |
 |Optional Text: | [Distributed Systems](http://www.amazon.com/Distributed-Systems-Concepts-Design-5th/dp/0132143011/), Coulouris et al.|
-|TA: | Aldrin Montana and Elisabeth Oliver|
+|TA: | Aleck Zhang and TBD|
 |TA sections: | TBD|
 |Modules: | [Modules](modules.md)|
 |Readings (in flux): | [Readings](readings.md)|
