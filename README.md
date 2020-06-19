@@ -1,4 +1,4 @@
-# CMPS128 Fall 2020
+# CSE138 Fall 2020
 ## Distributed Systems
 | key | value | 
 |-----|-------|
