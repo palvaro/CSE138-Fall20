@@ -53,10 +53,6 @@ but we expect you to come to the table with enough programming knowledge and exp
  
 # Assigments and Grading
 
-## Pop quizzes
-
-To ensure that everyone keeps up with the reading and attends class, we may hold a small number of pop quizzes.  Students who do not attend class on the day of a pop quiz will not receive credit.  If you need to miss class, please email the professor or TA *before* the absence with a brief explanation of the cause.
-
 ## Final Project
 
 The final project will involve implementing and managing fault-tolerant distributed system.  This will be a substantial enginering effort, and we encourage you to work in teams of up to four people.
@@ -78,9 +74,8 @@ There will be two examinations: the midterm and the final.
 
 | Subject | Share |
 |-------|---------|
-| Pop quizzes | 5% |
 | Participation | 10% |
-| Midterm | 15% |
+| Midterm | 20% |
 | Project | 40% |
 | Final   | 30%   | 
 
