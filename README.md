@@ -81,15 +81,15 @@ There will be two examinations: the midterm and the final.
 
 Final projects are required to pass the course.  The fact that participation accounts for 10% of the grade (and pop quizzes for 5%) should give you an idea of the important of class attendance.  
 
-#Logistics
+# Logistics
 
-##Getting in
+## Getting in
 
 Undergraduate Computer Science courses at UCSC are severely impacted by high enrollments. Unfortunately this makes it difficult to register for courses, particularly if you are registering late, major in a different subject, or are a graduate student.
 
 Although it is rarely possible to increase enrollment for the course due to external constraints (e.g., the size of the room and the availability of TAs), the course typically sees some attrition during the first few weeks.  I cannot promise a slot, but if you are in need of a permission code my recommendation is that you attend class for the first few weeks to see if a spot opens up.
 
-##Getting Help
+## Getting Help
 
 The material in this class can be complex and difficult, so there are several ways to get help with concepts covered in class, homework, and programming projects, listed in approximately the order you should try them for help.
 
