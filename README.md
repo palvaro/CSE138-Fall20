@@ -33,7 +33,7 @@ matter into four core [Modules](modules.md):
  
 # Readings and Prerequisites
 
-The optional text for CMPS128 is [Distributed Systems](http://www.amazon.com/Distributed-Systems-Concepts-Design-5th/dp/0132143011/) by Coulouris et al.  Despite having perhaps the worst cover art that I have ever seen on any book in my life, this text covers most of the fundamental
+The optional text for CMPS138 is [Distributed Systems](http://www.amazon.com/Distributed-Systems-Concepts-Design-5th/dp/0132143011/) by Coulouris et al.  Despite having perhaps the worst cover art that I have ever seen on any book in my life, this text covers most of the fundamental
 concepts of the course.  Note however that the text is supplemental.  The key material of this course is covered in lecture, and reading the text will not be sufficient to pass the examinations.
 
 For optional reading, Mikito Takada's [Distributed Systems for fun and profit](http://book.mixu.net/distsys/) covers 
@@ -41,9 +41,9 @@ many of the same topics in a sophisticated (albeit high-level) way.
 
 Students are required to have completed either CMPS101 or CE150, and are recommended to have completed CMPS111 or CMPS105.
 
-One of the purposes of CMPS128 is to familiarize you with practical aspects of implementing and reasoning about programs that 
+One of the purposes of CMPS138 is to familiarize you with practical aspects of implementing and reasoning about programs that 
 require the cooperation of some number of physical machines.  Hence system building is a critical part of the course.
-While CMPS128 will involve a substantial implementation component, we will not be teaching any particular language.
+While CMPS138 will involve a substantial implementation component, we will not be teaching any particular language.
 That is to say, you are here to build *distributed* systems, 
 but we expect you to come to the table with enough programming knowledge and experience to build non-distributed systems with minimal guidance.  Regardless of the coursework you have undertaken, if you are not comfortable using programming languages 
 (e.g. C, Java, Python, Ruby, Scala, Erlang, Bloom -- pick your poison) to build systems, this course is not for you.
