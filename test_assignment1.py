@@ -37,12 +37,6 @@ class TestHW1(unittest.TestCase):
 
     res = requests.post('http://'+localhost+':'+str(PORT)+'/hello')
     self.assertEqual(res.status_code, 405, msg='Did not return status 405 to POST request to /hello endpoint')
-
-    res = requests.get('http://'+localhost+':'+str(PORT)+'/echo')
-    self.assertEqual(res.status_code, 405, msg='Did not return status 405 to GET request to /echo endpoint')
-
-    res = requests.post('http://'+localhost+':'+str(PORT)+'/echo')
-    self.assertEqual(res.status_code, 405, msg='Did not return status 405 to POST request to /echo endpoint')
     
     res = requests.get('http://'+localhost+':'+str(PORT)+'/echo/foo')
     self.assertEqual(res.status_code, 405, msg='Did not return status 405 to GET request to /echo/<msg> endpoint')
