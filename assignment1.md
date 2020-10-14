@@ -120,3 +120,11 @@ message received: <msg>` with status code 200, where `<msg>` is the value of the
     POST message received: foo
     200
 ```
+
+The endpoint, `/echo/<msg>`, responds to a GET/POST request with status code 405:
+
+```bash
+    $ curl --request GET --write-out "\n%{http_code}\n" http://localhost:8081/echo/foo
+    This method is unsupported.
+    405
+```
