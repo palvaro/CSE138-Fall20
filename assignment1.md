@@ -99,7 +99,7 @@ The endpoint, `/hello/<name>`, also accepts a POST request with a `name` paramet
 
 ```bash
     $ curl --request POST --write-out "\n%{http_code}\n" http://localhost:8081/hello/Slugs
-    Hello, Slugs!.
+    Hello, Slugs!
     200
 ```
 
