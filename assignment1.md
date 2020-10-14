@@ -18,7 +18,7 @@ General
   web server.
 
 - Your `RESTful` web server must respond to `GET` and `POST` requests for the end points `/hello`,
-`/hello/<name>`, `/echo` and `/echo/<msg>`.
+`/hello/<name>` and `/echo/<msg>`.
 
 Building and testing your container {#building-testing}
 -----------------------------------
@@ -82,7 +82,7 @@ REST API
 Description
 -----------
 
-Your REST web server must have two endpoints: `/hello` and `/echo`.
+Your REST web server must have endpoints: `/hello`, `hello/<name>` and `/echo/<msg>`.
 
 The endpoint, `/hello`, accepts a GET request (with no parameter) and returns the string `Hello,
 world!` with HTTP status code 200. An example that shows both the response and the status code:
@@ -102,14 +102,6 @@ The endpoint, `/hello/<name>`, accepts a POST request with a `name` parameter an
     200
 ```
 
-The endpoint, `/echo`, responds to a GET/POST request with status code 405:
-
-```bash
-    $ curl --request GET (or POST) --write-out "\n%{http_code}\n" http://localhost:8081/echo
-    This method is unsupported.
-    405
-```
-
 The endpoint, `/echo/<msg>`, accepts a POST request with a `msg` parameter and returns `POST
 message received: <msg>` with status code 200, where `<msg>` is the value of the `msg` parameter:
 
@@ -121,7 +113,7 @@ message received: <msg>` with status code 200, where `<msg>` is the value of the
     200
 ```
 
-The endpoint, `/echo/<msg>`, responds to a GET/POST request with status code 405:
+The endpoint, `/echo/<msg>`, responds to a GET request with status code 405:
 
 ```bash
     $ curl --request GET --write-out "\n%{http_code}\n" http://localhost:8081/echo/foo
