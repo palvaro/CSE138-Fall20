@@ -7,8 +7,8 @@ CSE 138: Distributed Systems
 
 Date
 -------
-- Assigned: Thursday, 10/14/20
-- Due     : Thursday, 10/21/20
+- Assigned: Wednesday, 10/14/20
+- Due     : Wednesday, 10/21/20
 
 General
 -------
