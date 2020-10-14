@@ -93,7 +93,7 @@ world!` with HTTP status code 200. An example that shows both the response and t
     200
 ```
 
-The endpoint, `/hello/<name>`, also accepts a POST request with a `name` parameter and returns the string 
+The endpoint, `/hello/<name>`, accepts a POST request with a `name` parameter and returns the string 
 `Hello, <name>` with HTTP status code 200:
 
 ```bash
@@ -102,15 +102,15 @@ The endpoint, `/hello/<name>`, also accepts a POST request with a `name` paramet
     200
 ```
 
-The endpoint, `/echo`, responds to a GET request with status code 405:
+The endpoint, `/echo`, responds to a GET/POST request with status code 405:
 
 ```bash
-    $ curl --request GET --write-out "\n%{http_code}\n" http://localhost:8081/echo
+    $ curl --request GET (or POST) --write-out "\n%{http_code}\n" http://localhost:8081/echo
     This method is unsupported.
     405
 ```
 
-The endpoint, `/echo/<msg>`, also accepts a POST request with a `msg` parameter and returns `POST
+The endpoint, `/echo/<msg>`, accepts a POST request with a `msg` parameter and returns `POST
 message received: <msg>` with status code 200, where `<msg>` is the value of the `msg` parameter:
 
 ```bash
@@ -119,12 +119,4 @@ message received: <msg>` with status code 200, where `<msg>` is the value of the
            http://localhost:8081/echo/foo
     POST message received: foo
     200
-```
-
-The endpoint, `/echo`, responds to a POST request with no `msg` parameter with status code 405:
-
-```bash
-    $ curl --request POST --write-out "\n%{http_code}\n"  http://localhost:8081/echo
-    This method is unsupported.
-    405
 ```
