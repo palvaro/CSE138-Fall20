@@ -62,7 +62,7 @@ Submission workflow
     https://forms.gle/EcEkzDEjHy89yb2Q9
     
     - https://help.github.com/en/articles/github-glossary#commit
-    - The commit timestamp **must be no later than 10/21/2020 11:59 PM PDT**
+    - The commit timestamp **must be no later than 10/23/2020 11:59 PM PDT**
     - The google form must be submitted within a reasonable time of the due date (preferably 10 minutes).
 
 Evaluation and grading {#evaluating-grading}
