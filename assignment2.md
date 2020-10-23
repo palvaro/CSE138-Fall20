@@ -4,7 +4,7 @@
 CSE 138: Distributed Systems
 
 ### Date
-- Due     : Firday, 11/04/20
+- Due     : Wednesday, 11/04/20
 
 ### General
 
