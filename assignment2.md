@@ -1,13 +1,10 @@
----
-title : 'CSE 138: Distributed Systems'
-author: 'Fall 2020 - Assignment #2'
-date  :
-    assigned: Friday,    10/23/20
-    due     : Wednesday, 11/04/20
-geometry: margin=1in
-...
-
 # Instructions
+
+### Course
+CSE 138: Distributed Systems
+
+### Date
+- Due     : Firday, 11/04/20
 
 ### General
 
