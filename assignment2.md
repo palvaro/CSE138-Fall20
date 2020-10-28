@@ -135,7 +135,7 @@ CSE 138: Distributed Systems
     400
 ```
 
-- If the value provided for the new key has length greater than 50, the key-value store should
+- If the value of the key has length greater than 50, the key-value store should
   respond with status code 400 and JSON: `{"error":"Key is too long","message":"Error in PUT"}`.
 
 ```bash
