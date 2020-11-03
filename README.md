@@ -12,6 +12,7 @@
 |TA sections: | TBD|
 |Modules: | [Modules](modules.md)|
 |Readings (in flux): | [Readings](readings.md)|
+|Midterm Date:| in class on Friday 11/6|
 
 # Description
 
