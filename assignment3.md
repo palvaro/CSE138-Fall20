@@ -37,7 +37,7 @@ There are many strategies available for partitioning keys into shards, but we ex
 store to partition a roughly equal amount of key-value pairs to each shard. For a two node
 key-value store, this means that each node should store roughly half of the keys, because each
 shard is stored by a single node. You are free to choose any mechanism to partition keys across
-nodes. **We will cover a variety of mechanisms and their trade-offs in class**
+nodes. **We will cover a variety of mechanisms and their trade-offs in class.**
 
 If a node is queried (receives a request) for a key, the node must first find the node that stores
 the requested key--a variety of these mechanisms are discussed in lecture. If the queried node is
