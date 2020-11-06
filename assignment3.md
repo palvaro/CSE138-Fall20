@@ -161,8 +161,8 @@ key-value pairs across many (more than one) instances (nodes).
     - A file, `mechanism-description.pdf`, describing the mechanisms implemented for partitioning
       keys across nodes.
 
-- Submit your team name, repository URL, and the commit ID (aka commit hash) to be evaluated here:
-    todo google form
+- Submit CruzID of the contact person, repository URL, and the commit ID (aka commit hash) to be evaluated here:
+    https://forms.gle/UKuUPuQ2qDqPrVr4A
 
     - Each team will have a contact person who submits the google form and receives the grading.
     
