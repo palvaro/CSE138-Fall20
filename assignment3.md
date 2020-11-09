@@ -205,8 +205,8 @@ JSON format and with the appropriate HTTP status code.
 
 - To change the view, or add a new node to the key-value store, send a PUT request to the endpoint,
   `/kvs/view-change`, with a JSON payload containing the list of addresses in the new view.
-  For example, the JSON payload to add `node3`, with IP address `10.10.0.3:13800`, to a view
-  containing `node1` and `node2` would be: `{"view":"10.10.0.1:13800,10.10.0.2:13800,10.10.0.3:13800"}`.
+  For example, the JSON payload to add `node3`, with IP address `10.10.0.6:13800`, to a view
+  containing `node1` and `node2` would be: `{"view":"10.10.0.4:13800,10.10.0.5:13800,10.10.0.6:13800"}`.
   
   View change request can be sent to any of the existing nodes.
     
@@ -221,16 +221,16 @@ JSON format and with the appropriate HTTP status code.
           {
               "message": "View change successful",
               "shards" : [
-                  { "address": "10.10.0.1:13800", "key-count": 5 },
-                  { "address": "10.10.0.2:13800", "key-count": 3 },
-                  { "address": "10.10.0.3:13800", "key-count": 6 }
+                  { "address": "10.10.0.4:13800", "key-count": 5 },
+                  { "address": "10.10.0.5:13800", "key-count": 3 },
+                  { "address": "10.10.0.6:13800", "key-count": 6 }
               ]
           }
       ```
       where each element in the "shards" list is a dictionary with two key-value pairs: the
       "address" key maps to the IP address of a node storing a shard, and the "key-count" key maps
       to the number of keys that are assigned to that node. For the above example, the node at
-      address "10.10.0.3:13800" has 6 key-value pairs, meaning that after the view-change, 6 of the
+      address "10.10.0.6:13800" has 6 key-value pairs, meaning that after the view-change, 6 of the
       14 keys in the key-value store were re-partitioned into the shard stored on `node3`.
       
   Your team have enough time (6 sec) to finish this request.
@@ -251,8 +251,8 @@ For all key-value operations:
   requested key), its response should **not include** the address of the storage node (should not
   include its own address).
 
-For the below operation descriptions, it is assumed that `node1` (10.10.0.1:13800) does not store
-the key, `sampleKey`, and that `node2` (10.10.0.2:13800) does store the key.
+For the below operation descriptions, it is assumed that `node1` (10.10.0.4:13800) does not store
+the key, `sampleKey`, and that `node2` (10.10.0.5:13800) does store the key.
 
 ##### Insert new key
 
@@ -266,8 +266,8 @@ the key, `sampleKey`, and that `node2` (10.10.0.2:13800) does store the key.
       PUT"}`.
 
     - On success, the key-value store should respond with status code 201 and JSON:
-      `{"message":"Added successfully","replaced":false,"address":"10.10.0.2:13800"}`. This example
-      assumes the receiving node (`node1`) does not have address "10.10.0.2:13800" and it acted as a proxy to
+      `{"message":"Added successfully","replaced":false,"address":"10.10.0.5:13800"}`. This example
+      assumes the receiving node (`node1`) does not have address "10.10.0.5:13800" and it acted as a proxy to
       the node (`node2`) with that address. (Remember the follower from assignment 2?)
 
 
@@ -303,8 +303,8 @@ the key, `sampleKey`, and that `node2` (10.10.0.2:13800) does store the key.
       404 and JSON: `{"doesExist":false,"error":"Key does not exist","message":"Error in DELETE"}`
 
     - On success, the key-value store should respond with status code 200 and JSON:
-      `{"doesExist":true,"message":"Deleted successfully","address":"10.10.0.2:13800"}`. This
-      example assumes the receiving node (`node1`) does not have address "10.10.0.2:13800" and it acted as a
+      `{"doesExist":true,"message":"Deleted successfully","address":"10.10.0.5:13800"}`. This
+      example assumes the receiving node (`node1`) does not have address "10.10.0.5:13800" and it acted as a
       proxy to the node (`node2`) with that address.
 
 
@@ -322,12 +322,12 @@ the key, `sampleKey`, and that `node2` (10.10.0.2:13800) does store the key.
 
 - Run two instances named `node1` and `node2`
 ```bash
-    $ docker run -d -p 13801:13800 --net=kv_subnet --ip=10.10.0.1 --name="node1" 
-      -e ADDRESS="10.10.0.1:13800" -e VIEW="10.10.0.1:13800,10.10.0.2:13800" 
+    $ docker run -d -p 13801:13800 --net=kv_subnet --ip=10.10.0.4 --name="node1" 
+      -e ADDRESS="10.10.0.4:13800" -e VIEW="10.10.0.4:13800,10.10.0.5:13800" 
       kvs:3.0
 
-    $ docker run -d -p 13802:13800 --net=kv_subnet --ip=10.10.0.2 --name="node2" 
-      -e ADDRESS="10.10.0.2:13800" -e VIEW="10.10.0.1:13800,10.10.0.2:13800" 
+    $ docker run -d -p 13802:13800 --net=kv_subnet --ip=10.10.0.5 --name="node2" 
+      -e ADDRESS="10.10.0.5:13800" -e VIEW="10.10.0.4:13800,10.10.0.5:13800" 
       kvs:3.0
 ```
 
@@ -335,17 +335,17 @@ the key, `sampleKey`, and that `node2` (10.10.0.2:13800) does store the key.
 
 - After a bunch of data operations, add an instance named `node3` and request for view-change:
 ```bash
-    $ docker run -d -p 13803:13800 --net=kv_subnet --ip=10.10.0.3 --name="node3" 
-      -e ADDRESS="10.10.0.3:13800" -e VIEW="10.10.0.1:13800,10.10.0.2:13800,10.10.0.3:13800"
+    $ docker run -d -p 13803:13800 --net=kv_subnet --ip=10.10.0.6 --name="node3" 
+      -e ADDRESS="10.10.0.6:13800" -e VIEW="10.10.0.4:13800,10.10.0.5:13800,10.10.0.6:13800"
       kvs:3.0
     
     $ curl --request   PUT                          \
            --header    "Content-Type: application/json" \
            --write-out "%{http_code}\n"              \
-           --data      '{"view":"10.10.0.1:13800,10.10.0.2:13800,10.10.0.3:13800"}'
+           --data      '{"view":"10.10.0.4:13800,10.10.0.5:13800,10.10.0.6:13800"}'
            http://127.0.0.1:13801(or 13802, 13803)/kvs/view-change
-           {"message": "View change successful","shards":[{"address":"10.10.0.1:13800","key-count":5},
-           {"address":"10.10.0.2:13800","key-count":3},{"address":"10.10.0.3:13800","key-count":6}]}
+           {"message": "View change successful","shards":[{"address":"10.10.0.4:13800","key-count":5},
+           {"address":"10.10.0.5:13800","key-count":3},{"address":"10.10.0.6:13800","key-count":6}]}
            200
 ```
 
