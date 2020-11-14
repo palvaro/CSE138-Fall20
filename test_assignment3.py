@@ -77,7 +77,7 @@ class Client():
 		result = result.json()
 
 		if result != None:
-			jsonKeys = ["message", "replaced", "error", "doesExist", "value", "key-count", "shards"]
+			jsonKeys = ["message", "replaced", "error", "doesExist", "value", "key-count", "shards", "address"]
 			result = {k:result[k] for k in jsonKeys if k in result}
 
 			result["status_code"] = status_code
@@ -185,6 +185,11 @@ class TestHW3(unittest.TestCase):
 
 		return key_counts, total_keys
 
+	def assertEqual_helper(self, a, b):
+		a = a.copy()
+		a.pop("address",None)
+		self.assertEqual(a,b)
+
 	# (add, update, get, key-count, delete, key-count)'s
 	def test_1(self):
 		keys = 100
@@ -194,27 +199,27 @@ class TestHW3(unittest.TestCase):
 				id1,id2 = 2,1
 
 			key = "test_1_%d"%i
-			value = "a friendly string"
+			value = "a friendly string %d"%i
 
 			# add
 			result = client.putKey(key,value,nodes[id1]["port"])
-			self.assertEqual(result,addResponse_Success)
+			self.assertEqual_helper(result,addResponse_Success)
 			# update
 			result = client.putKey(key,value,nodes[id1]["port"])
-			self.assertEqual(result,updateResponse_Success)
+			self.assertEqual_helper(result,updateResponse_Success)
 			# get
 			result = client.getKey(key,nodes[id2]["port"])
 			expected = getResponse_Success.copy()
 			expected["value"] = value
 			self.check_node_id(result,id2,2)
-			self.assertEqual(result,expected)
+			self.assertEqual_helper(result,expected)
 			# key-count
 			key_counts, total = self.get_key_counts(2)
 			self.assertEqual(total, 1)
 			# delete
 			result = client.deleteKey(key, nodes[id2]["port"])
 			self.check_node_id(result,id2,2)
-			self.assertEqual(result, delResponse_Success)
+			self.assertEqual_helper(result, delResponse_Success)
 			# key-count
 			key_counts, total = self.get_key_counts(2)
 			self.assertEqual(total, 0)
@@ -229,7 +234,8 @@ class TestHW3(unittest.TestCase):
 			if i%2 == 0:
 				id = 2
 			result = client.putKey("test_2_%d"%i,"a friendly string %d"%i,nodes[id]["port"])
-			self.assertEqual(result,addResponse_Success)
+			self.assertEqual_helper(result,addResponse_Success)
+
 		# key-count
 		key_counts1, total1 = self.get_key_counts(2)
 		self.assertEqual(total1, keys)
@@ -249,7 +255,7 @@ class TestHW3(unittest.TestCase):
 			key = "test_2_%d"%i
 			result = client.deleteKey(key, nodes[id]["port"])
 			self.check_node_id(result,id,3)
-			self.assertEqual(result, delResponse_Success)
+			self.assertEqual_helper(result, delResponse_Success)
 		# key-count
 		key_counts3, total3 = self.get_key_counts(3)
 		self.assertEqual(total3, 0)
