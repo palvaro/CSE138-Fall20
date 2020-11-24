@@ -85,7 +85,7 @@ Notice, though, that the relation between **B1** and **A2** is non-trivial and i
 
 More specifically, **causal-context** should represent the history of the data operations, which means when sending the request, the client has already witnessed all the events carried by **causal-context**. The new **causal-context** should carry the events from the old one as well as the event(s) witnessed by the current data operation.
 
-In the Alice and Bob example, suppose a database contains two replicas: R1 and R2. Alice sends **Write(A="Bob smells")** (aka **E1**) to R1. The response to Bob **Read(A)** from Replica1 should carry **causal-context** like: *Bob knows that Alice writes "Bob smells"*. Bob sends **Write(B="F you Alice")** together with **causal-context** to R2. Then Carol comes along and reads **B="F you Alice"** from R2. Carol wants to know what happened to Alice by sending **Read(A)** to R2. R2 may return:
+In the Alice and Bob example, suppose a database contains two replicas: R1 and R2. Alice sends **Write(A="Bob smells")** (aka **E1**) to R1. The response to Bob **Read(A)** from Replica1 should carry **causal-context** like: *Bob knows that Alice writes "Bob smells"*. Note that we don't actually require that **causal-context** should carry such concrete history. Bob sends **Write(B="F you Alice")** together with **causal-context** to R2. Then Carol comes along and reads **B="F you Alice"** from R2. Carol wants to know what happened to Alice by sending **Read(A)** to R2. R2 may return:
 
 - R2 has received the gossip about **E1**. Carol will read *Bob smells*.
 
