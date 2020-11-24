@@ -6,7 +6,7 @@ CSE 138: Distributed Systems
 
 ## Date
 
-- Due     : todo
+- Due     : 12/14/2020
 
 In this assignment, your team will implement a distributed key-value store that is partition-tolerant, available, and causally consistent. In other words, in the event of a partition, your team’s key-value store is expected to be **available**, while still providing some consistency–specifically **causal consistency**.
 
@@ -83,13 +83,15 @@ We are able to establish **A1 → B1** because they originate from the same proc
 
 Notice, though, that the relation between **B1** and **A2** is non-trivial and is only known via the process, Client2. The key-value store, then, requires some extra help from Client2 to make the correct association in the form of a **causal-context**. Client2 must piggyback the causal context with requests for B1 and A2 to convey the necessary information for the key-value store to relate these events as B1 → A2.
 
-(todo: begins) More specifically, **causal-context** should represent the history of the data operations, which means when sending the request, the client has already witnessed all the events carried by **causal-context**. The new **causal-context** should carry the events from the old one as well as the event(s) witnessed by the current data operation.
+More specifically, **causal-context** should represent the history of the data operations, which means when sending the request, the client has already witnessed all the events carried by **causal-context**. The new **causal-context** should carry the events from the old one as well as the event(s) witnessed by the current data operation.
 
 In the Alice and Bob example, suppose a database contains two replicas: R1 and R2. Alice sends **Write(A="Bob smells")** (aka **E1**) to R1. The response to Bob **Read(A)** from Replica1 should carry **causal-context** like: *Bob knows that Alice writes "Bob smells"*. Bob sends **Write(B="F you Alice")** together with **causal-context** to R2. Then Carol comes along and reads **B="F you Alice"** from R2. Carol wants to know what happened to Alice by sending **Read(A)** to R2. R2 may return:
 
 - R2 has received the gossip about **E1**. Carol will read *Bob smells*.
+
 - Alice writes something else like **Write(A="Bob still smells")** (aka **E2**), we will get the happens before relationship **E1 → E2** saying *Alice writes "Bob still smells" after writing "Bob smells"*. **E2** can be sent to R2 directly from Alice (Alice -> R2) or through gossip (Alice -> R1, R1 -> R2). Carol will read *Bob still smells*.
-- In some cases (e.g. network partitions), R2 is unable to receive the gossip about **E1**. Carol's read will fail since from R2's prospective, the value of **A** that Carol asks for **must be** based on the witness of **E1**. R2 should return "Unable to satisfy request", which will be discussed later (todo: ends)
+
+- In some cases (e.g. network partitions), R2 is unable to receive the gossip about **E1**. Carol's read will fail since from R2's prospective, the value of **A** that Carol asks for **must be** based on the witness of **E1**. R2 should return "Unable to satisfy request", which will be discussed later.
 
 Your team is free to implement the causal context in a variety of ways, since it will also depend on how the consistency protocol is implemented. All clients are required to receive a causal context in a response from the key-value store and include it in the next request to the key-value store.
 
@@ -176,9 +178,9 @@ In this assignment, your key-value store will partition keys into shards, replic
     
     - A file, member-contributions.tsv, describing contributions of each team member.
     
-    - Submit CruzID of your contact person, repository URL, and the commit ID (aka commit hash) to be evaluated here: todo
+    - Submit CruzID of your contact person, repository URL, and the commit ID (aka commit hash) to be evaluated here: https://forms.gle/MtcMSxepB4fuQK6w7
 
-    - The commit timestamp must be no later than todo 11:59 PM PDT
+    - The commit timestamp must be no later than 12/14/2020 11:59 PM PDT
 
     - The google form must be submitted within a reasonable time of the due date (preferably 10 minutes).
     
@@ -538,7 +540,6 @@ In this assignment, your key-value store will partition keys into shards, replic
   
     - If the key, sampleKey, does not exist, the key-value store should respond with status code 404. The example sends the request to node1.
 
-    todo
     ```bash
     $ curl --request   GET                                        \
            --header    "Content-Type: application/json"           \
