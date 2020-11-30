@@ -294,14 +294,14 @@ In this assignment, your key-value store will partition keys into shards, replic
     - {"error":"Unable to satisfy request","message":"Error in GET"}
     - {"error":"Unable to satisfy request","message":"Error in DELETE"}
 
-| Endpoint URI     | accepted request types    |
-|------------------|---------------------------|
-| /kvs/keys/<key>  | GET, PUT                  |
-| /kvs/key-count   | GET                       |
-| /kvs/shards      | GET                       |
-| /kvs/shards/<id> | GET                       |
-| /kvs/view-change | PUT                       |
-| /kvs/keys/<key>  | DELETE (for extra credit) |
+| Endpoint URI       | accepted request types    |
+| ------------------ | ------------------------- |
+| /kvs/keys/\<key\>  | GET, PUT                  |
+| /kvs/key-count     | GET                       |
+| /kvs/shards        | GET                       |
+| /kvs/shards/\<id\> | GET                       |
+| /kvs/view-change   | PUT                       |
+| /kvs/keys/\<key\>  | DELETE (for extra credit) |
 
 
 - For all operations:
@@ -351,7 +351,7 @@ In this assignment, your key-value store will partition keys into shards, replic
 
 #### GET information for a specific shard
 
-- To get the number of keys stored by a shard and what node each replica is stored on, send a GET request to the endpoint, **/kvs/shards/<shard-id>** at any node.
+- To get the number of keys stored by a shard and what node each replica is stored on, send a GET request to the endpoint, **/kvs/shards/\<shard-id\>** at any node.
 
     - On success, the response should have status code 200.
 
