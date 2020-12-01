@@ -426,14 +426,10 @@ In this assignment, your key-value store will partition keys into shards, replic
     
     - During a network partition, each side of the partition will contain at least one replica from each shard. The test script will propagate **causal-context** through requests. Key-value store should be able to respond to key-value operations with casual-constitency. After the network partition is healed, a gossip protocol should be able to make all replicas converge to newest, correct state.
     
-    - If a key-value operation carries **causal-context** that violates casual-consistency, please return status code 400 and one of the following JSON:
-    
-        - {"error":"Unable to satisfy request","message":"Error in PUT"}
+    - If a key-value operation, more specifically the read operation, carries **causal-context** that violates casual-consistency, please return status code 400 and one of the following JSON:
     
         - {"error":"Unable to satisfy request","message":"Error in GET"}
-    
-        - {"error":"Unable to satisfy request","message":"Error in DELETE"}
-    
+        
     - When **replicate_factor > 1**, your gossip protocol should notify all the replicas of a key-value operation within 5 seconds 
 
 - For the below operation descriptions, it is assumed that shard1 (containing node1 and node2) does not store **sampleKey**, and that shard2 (containing node3 and node4) does store **sampleKey**.
