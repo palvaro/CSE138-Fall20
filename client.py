@@ -92,8 +92,10 @@ class Client():
 
             result["status_code"] = status_code
 
-            if self.causal_context_flag and "causal-context" in result:
-                self.causal_context = result["causal-context"]
+            if "causal-context" in result:
+                if self.causal_context_flag:
+                    self.causal_context = result["causal-context"]
+
                 result.pop("causal-context")
         else:
             result = {"status_code": status_code}
