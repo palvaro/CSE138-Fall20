@@ -378,7 +378,7 @@ In this assignment, your key-value store will partition keys into shards, replic
 
 - To change the view, or add newly started nodes to the key-value store, send a PUT request to the endpoint, /kvs/view-change, with a JSON payload containing the list of addresses in the new view and the replication factor.
 
-- Your kvs only need to guarantee causal consistency among two view-change's.
+- Your kvs only need to guarantee causal consistency among two view-change's (You can reset your causal context during view-change's).
 
 - A view change requires two operations:
 
